@@ -12,6 +12,9 @@ app.use(cors())
 app.use(express.json())
 app.use('/blogs', blogRoutes)
 
+app.get('/', (req, res)=>{
+    res.send('HOLA MUNDO')
+}) 
 try {
     await db.authenticate()
     console.log('Conexión exitosa a la DB')
@@ -19,9 +22,7 @@ try {
     console.log(`El error de conexión es: ${error}`)
 }
 
-app.get('/', (req, res)=>{
-    res.send('HOLA MUNDO')
-}) 
+
 
 app.listen(PORT, ()=>{
     console.log('Server UP running in http://localhost:8000/')
